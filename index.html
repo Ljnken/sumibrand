@@ -1,0 +1,1313 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Витрина авторских сумок ручной работы. Уникальные модели из качественных материалов.">
+    <meta name="theme-color" content="#910909">
+    <meta property="og:title" content="Arty Sumaya - Авторские сумки">
+    <meta property="og:description" content="Витрина авторских сумок ручной работы">
+    <meta property="og:type" content="website">
+    <title>Arty Sumaya - Витрина сумок</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23910909' width='100' height='100'/><text x='50' y='50' font-size='60' fill='white' text-anchor='middle' dy='.3em' font-weight='bold'>С</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --burgundy: #910909;
+            --gold: #c4a000;
+            --black: #000000;
+            --white: #ffffff;
+            --dark-bg: #0f0f0f;
+            --dark-secondary: #1a1a1a;
+            --dark-card: #1f1f1f;
+            --border-color: #2a2a2a;
+            --text-primary: #e8e8e8;
+            --text-secondary: #b0b0b0;
+            --transition: all 0.3s ease;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--dark-bg);
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--burgundy) 0%, #6d0707 100%);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px 20px;
+            background-color: var(--dark-secondary);
+            border-bottom: 2px solid var(--gold);
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 12px 30px;
+            border: 2px solid transparent;
+            background: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-body);
+        }
+
+        .nav-tab:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        .nav-tab.active {
+            color: var(--gold);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        /* ===== GALLERY GRID ===== */
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin: 50px 0 40px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            padding: 0 20px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .bag-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bag-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(145, 9, 9, 0.4);
+            border-color: var(--gold);
+        }
+
+        .bag-card-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: var(--dark-secondary);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .bag-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            loading: lazy;
+            transition: var(--transition);
+        }
+
+        .bag-card:hover .bag-card-image img {
+            transform: scale(1.05);
+        }
+
+        .bag-card-info {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bag-card-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-family: var(--font-body);
+        }
+
+        .bag-card-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-top: auto;
+            font-family: var(--font-heading);
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--dark-card);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+            animation: slideUp 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--burgundy);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 1001;
+        }
+
+        .modal-close:hover {
+            background: #6d0707;
+            transform: rotate(90deg);
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            padding: 30px;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--dark-secondary);
+        }
+
+        .modal-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background-color: var(--dark-secondary);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-image img:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+
+        /* ===== IMAGE LIGHTBOX ===== */
+        .image-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .image-lightbox.active {
+            display: flex;
+        }
+
+        .image-lightbox-container {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            max-width: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-lightbox-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .image-lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 2001;
+        }
+
+        .image-lightbox-close:hover {
+            background: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .image-lightbox-nav {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+            pointer-events: none;
+        }
+
+        .image-lightbox-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(196, 160, 0, 0.7);
+            color: var(--black);
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            pointer-events: all;
+        }
+
+        .image-lightbox-btn:hover {
+            background: var(--gold);
+        }
+
+        .image-lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-family: var(--font-body);
+        }
+
+
+        .modal-info {
+            padding: 30px;
+        }
+
+        .modal-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--font-heading);
+        }
+
+        .modal-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: inline-block;
+            font-family: var(--font-heading);
+        }
+
+        .modal-description {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin: 25px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: var(--font-body);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--burgundy);
+            color: var(--white);
+            font-family: var(--font-body);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(196, 160, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: #d4b200;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(196, 160, 0, 0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark-secondary);
+            color: var(--text-primary);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--gold);
+            border-radius: 4px;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 600;
+            border: 1px solid var(--gold);
+            font-family: var(--font-body);
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-tabs {
+                padding: 20px 10px;
+                gap: 10px;
+            }
+
+            .nav-tab {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+                padding: 0 10px 30px;
+            }
+
+            .modal-gallery {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 10px;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .modal-info {
+                padding: 20px;
+            }
+
+            .modal-name {
+                font-size: 1.5rem;
+            }
+
+            .modal-price {
+                font-size: 1.4rem;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 10px;
+            }
+
+            .modal-close {
+                width: 35px;
+                height: 35px;
+                font-size: 20px;
+            }
+
+            .socials {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .social-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ===== UTILITY ===== */
+        .hidden {
+            display: none !important;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Lazy loading placeholder */
+        img[loading="lazy"] {
+            background-color: var(--dark-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <h1>СУМИ</h1>
+        <p>Авторские сумки ручной работы</p>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" data-category="available">В наличии</button>
+        <button class="nav-tab" data-category="archive">Архив</button>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <section id="gallery-section">
+            <h2 class="section-title" id="section-title">В наличии</h2>
+            <div class="gallery" id="gallery"></div>
+        </section>
+    </main>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal">
+        <button class="modal-close" id="modal-close">✕</button>
+        <div class="modal-content">
+            <div class="modal-gallery" id="modal-gallery"></div>
+            <div class="modal-info">
+                <h2 class="modal-name" id="modal-name"></h2>
+                <div class="modal-price" id="modal-price"></div>
+                <p class="modal-description" id="modal-description"></p>
+                <div class="modal-actions">
+                    <a href="#" id="modal-telegram" class="btn btn-primary">Написать в Telegram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-title">Свяжитесь со мной</h3>
+            <div class="socials">
+                <a href="https://t.me/arty_sumaya" class="social-link" target="_blank" rel="noopener noreferrer">Telegram для заказа</a>
+                <a href="https://t.me/syymu" class="social-link" target="_blank" rel="noopener noreferrer">Канал в Telegram</a>
+                <a href="https://www.tiktok.com/@arty_symu" class="social-link" target="_blank" rel="noopener noreferrer">TikTok</a>
+                <a href="https://instagram.com/arty_syymu" class="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 СУМИ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+        <!-- IMAGE LIGHTBOX -->
+    <div class="image-lightbox" id="imageLightbox">
+        <button class="image-lightbox-close" id="lightboxClose">✕</button>
+        <div class="image-lightbox-container">
+            <img class="image-lightbox-img" id="lightboxImg" src="" alt="Фото в полном размере">
+            <div class="image-lightbox-nav">
+                <button class="image-lightbox-btn" id="lightboxPrev">‹</button>
+                <button class="image-lightbox-btn" id="lightboxNext">›</button>
+            </div>
+        </div>
+        <div class="image-lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <script>
+        // ===== DATA =====
+        const bagsData = [
+            {
+                id: 1,
+                name: "Баратрум",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/bara_bag_1.jpg",
+                additionalImages: ["img/bara_bag_2.jpg", "img/bara_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 2,
+                name: "Летучая мышь",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/bat_bag_1.jpg",
+                additionalImages: ["img/bat_bag_2.jpg", "img/bat_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 3,
+                name: "Брендовая Синяя",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/brand_blue_bag_1.jpg",
+                additionalImages: ["img/brand_blue_bag_2.jpg", "img/brand_blue_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 4,
+                name: "Брендовая Красная",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/brand_red_bag_1.jpg",
+                additionalImages: ["img/brand_red_bag_2.jpg", "img/brand_red_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 5,
+                name: "Грудь",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/breasds_bag_1.jpg",
+                additionalImages: ["img/breasds_bag_2.jpg", "img/breasds_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 6,
+                name: "Сумка для мерча",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/bud_bag_1.jpg",
+                additionalImages: ["img/bud_bag_2.jpg", "img/bud_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 7,
+                name: "Розовая бабочка",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/butterfly_pink_bag_1.jpg",
+                additionalImages: ["img/butterfly_pink_bag_2.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 8,
+                name: "Белая бабочка",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/butterfly_white_bag_1.jpg",
+                additionalImages: ["img/butterfly_white_bag_2.jpg", "img/butterfly_white_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 9,
+                name: "Сердце в цепях",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/chains_klassic_bag_1.jpg",
+                additionalImages: ["img/chains_klassic_bag_2.jpg", "img/chains_klassic_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 10,
+                name: "Крест Черная",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/crest_bag_1.jpg",
+                additionalImages: ["img/crest_bag_2.jpg", "img/crest_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 11,
+                name: "Крест Фиолетовая",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/crest_purple_bag_1.jpg",
+                additionalImages: [],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 12,
+                name: "Крест Белая",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/crest_white_bag_1.jpg",
+                additionalImages: ["img/crest_white_bag_2.jpg", "img/crest_white_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 13,
+                name: "Дота важнее меня",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/dota_bag_1.jpg",
+                additionalImages: ["img/dota_bag_2.jpg", "img/dota_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 14,
+                name: "Дракон",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/dragon_bag_1.jpg",
+                additionalImages: ["img/dragon_bag_2.jpg", "img/dragon_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 40,
+                name: "Японские рыбы",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/fish_bag_1.jpg",
+                additionalImages: [],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 15,
+                name: "Зеленый мех",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/fur_green_bag_1.jpg",
+                additionalImages: ["img/fur_green_bag_2.jpg", "img/fur_green_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 16,
+                name: "Белая с мехом",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/fur_white_bag_1.jpg",
+                additionalImages: ["img/fur_white_bag_2.jpg", "img/fur_white_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 17,
+                name: "КСБ Генезис",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/genesis_bag_1.jpg",
+                additionalImages: ["img/genesis_bag_2.jpg", "img/genesis_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 18,
+                name: "КСБ Банка",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/jar_bag_1.jpg",
+                additionalImages: ["img/jar_bag_2.jpg", "img/jar_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+
+            {
+                id: 19,
+                name: "Крокодиловая",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/krok_bag_1.jpg",
+                additionalImages: ["img/krok_bag_2.jpg", "img/krok_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 20,
+                name: '"Маме не покажем" кожанная',
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/mame_leather_bag_1.jpg",
+                additionalImages: [],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 21,
+                name: '"Маме не покажем" синяя',
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/mame_velur_blue_bag_1.jpg",
+                additionalImages: ["img/mame_velur_blue_bag_2.jpg", "img/mame_velur_blue_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 22,
+                name: '"Маме не покажем" красная',
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/mame_velur_red_bag_1.jpg",
+                additionalImages: ["img/mame_velur_red_bag_2.jpg", "img/mame_velur_red_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 23,
+                name: "Луна",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/moon_bag_1.jpg",
+                additionalImages: ["img/moon_bag_2.jpg", "img/moon_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 24,
+                name: "Национальная коричневая",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/nation_brown_bag_1.jpg",
+                additionalImages: ["img/nation_brown_bag_2.jpg", "img/nation_brown_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 25,
+                name: "Национальная синяя",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/nation_blue_bag_1.jpg",
+                additionalImages: ["img/nation_blue_bag_2.jpg", "img/nation_blue_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 26,
+                name: "Национальная светлая",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/nation_yellow_bag_1.jpg",
+                additionalImages: ["img/nation_yellow_bag_2.jpg", "img/nation_yellow_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 27,
+                name: "Черная с глазом и кружевом",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/old_eye_bag_1.jpg",
+                additionalImages: [],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 28,
+                name: "Черная с фиолетовым мехом",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/old_fur_bag_1.jpg",
+                additionalImages: [],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 29,
+                name: "Розовая с глазом",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/pink_eye_bag_1.jpg",
+                additionalImages: ["img/pink_eye_bag_2.jpg", "img/pink_eye_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 30,
+                name: "КСБ Попс кожаная",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/pops_leather_bag_1.jpg",
+                additionalImages: ["img/pops_leather_bag_2.jpg", "img/pops_leather_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 31,
+                name: "Паучок",
+                category: "available",
+                date: "2024-12-01",
+                mainImage: "img/spider_bag_1.jpg",
+                additionalImages: ["img/spider_bag_2.jpg", "img/spider_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 32,
+                name: "Тим Бёртон",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/tim_bag_1.jpg",
+                additionalImages: ["img/tim_bag_2.jpg", "img/tim_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 33,
+                name: "Дьявольская сумка",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/devils_bag_1.jpg",
+                additionalImages: [],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 34,
+                name: "Готические ленты",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/gothic_ribbons_bag_1.jpg",
+                additionalImages: ["img/gothic_ribbons_bag_2.jpg", "img/gothic_ribbons_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 35,
+                name: "KSB Bas",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/ksb_bas_bag_1.jpg",
+                additionalImages: ["img/ksb_bas_bag_2.jpg", "img/ksb_bas_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 36,
+                name: "KSB для шарфа",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/ksb_for_scarf_bag_1.jpg",
+                additionalImages: ["img/ksb_for_scarf_bag_2.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 37,
+                name: "KSB Pops Mens",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/ksb_pops_mens_bag_1.jpg",
+                additionalImages: ["img/ksb_pops_mens_bag_2.jpg", "img/ksb_pops_mens_bag_3.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 38,
+                name: "Linkin Park",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/linkin_park_bag_1.jpg",
+                additionalImages: ["img/linkin_park_bag_2.jpg"],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            },
+            {
+                id: 39,
+                name: "Meet Bag",
+                category: "archive",
+                date: "2024-12-01",
+                mainImage: "img/meet_bag_1.jpg",
+                additionalImages: [],
+                price: "5500",
+                description: "Материал: я хз, плотная синяя\nРазмер: 35×25×12 см\nВес: 650 г\nОсобенности: застежка на молнии, внутренний карман"
+            }
+
+        ];    
+
+        // ===== STATE =====
+        let currentCategory = "available";
+
+        // ===== DOM ELEMENTS =====
+        const gallery = document.getElementById("gallery");
+        const modal = document.getElementById("modal");
+        const modalClose = document.getElementById("modal-close");
+        const navTabs = document.querySelectorAll(".nav-tab");
+        const sectionTitle = document.getElementById("section-title");
+
+        // ===== LIGHTBOX DOM ELEMENTS =====
+        let currentLightboxImages = [];
+        let currentLightboxIndex = 0;
+        const imageLightbox = document.getElementById("imageLightbox");
+        const lightboxImg = document.getElementById("lightboxImg");
+        const lightboxClose = document.getElementById("lightboxClose");
+        const lightboxPrev = document.getElementById("lightboxPrev");
+        const lightboxNext = document.getElementById("lightboxNext");
+        const lightboxCounter = document.getElementById("lightboxCounter");
+
+        // ===== FUNCTIONS =====
+
+        /**
+         * Sort bags by date (newest first, but display oldest first in UI)
+         */
+        function sortBags(bags) {
+            return bags.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+
+        /**
+         * Open image lightbox
+         */
+        function openImageLightbox(images, index) {
+            currentLightboxImages = images;
+            currentLightboxIndex = index;
+            updateLightboxImage();
+            imageLightbox.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        /**
+         * Close lightbox
+         */
+        function closeLightbox() {
+            imageLightbox.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        /**
+         * Update lightbox image display
+         */
+        function updateLightboxImage() {
+            lightboxImg.src = currentLightboxImages[currentLightboxIndex];
+            lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${currentLightboxImages.length}`;
+        }
+
+        /**
+         * Navigate to previous image
+         */
+        function prevImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+            updateLightboxImage();
+        }
+
+        /**
+         * Navigate to next image
+         */
+        function nextImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+            updateLightboxImage();
+        }
+
+        /**
+         * Render gallery for current category
+         */
+        function renderGallery() {
+            gallery.innerHTML = "";
+            const filtered = bagsData.filter(bag => bag.category === currentCategory);
+            const sorted = sortBags(filtered);
+
+            sorted.forEach(bag => {
+                const card = document.createElement("div");
+                card.className = "bag-card";
+                card.innerHTML = `
+                    <div class="bag-card-image">
+                        <img src="${bag.mainImage}" alt="${bag.name}" loading="lazy">
+                    </div>
+                    <div class="bag-card-info">
+                        <div class="bag-card-name">${bag.name}</div>
+                        <div class="bag-card-price">${bag.price}</div>
+                    </div>
+                `;
+                card.addEventListener("click", () => openModal(bag));
+                gallery.appendChild(card);
+            });
+
+            // Update section title
+            sectionTitle.textContent = currentCategory === "available" ? "В наличии" : "Архив";
+        }
+
+        /**
+         * Open modal with bag details
+         */
+        function openModal(bag) {
+            renderModalGallery(bag);
+
+            document.getElementById("modal-name").textContent = bag.name;
+            document.getElementById("modal-price").textContent = bag.price;
+            document.getElementById("modal-description").textContent = bag.description;
+            document.getElementById("modal-telegram").href = "https://t.me/arty_sumaya";
+
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        /**
+         * Render modal gallery with clickable images
+         */
+        function renderModalGallery(bag) {
+            const modalGallery = document.getElementById("modal-gallery");
+            modalGallery.innerHTML = "";
+
+            const images = [
+                bag.mainImage,
+                ...(bag.additionalImages || [])
+            ].filter(Boolean);
+
+            images.forEach((src, index) => {
+                const div = document.createElement("div");
+                div.className = "modal-image";
+
+                const img = document.createElement("img");
+                img.src = src;
+                img.alt = bag.name;
+                img.style.cursor = "pointer";
+                img.addEventListener("click", () => {
+                    openImageLightbox(images, index);
+                });
+
+                div.appendChild(img);
+                modalGallery.appendChild(div);
+            });
+        }
+
+        /**
+         * Close modal
+         */
+        function closeModal() {
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        // ===== EVENT LISTENERS =====
+
+        // Navigation tabs
+        navTabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                navTabs.forEach(t => t.classList.remove("active"));
+                tab.classList.add("active");
+                currentCategory = tab.dataset.category;
+                renderGallery();
+            });
+        });
+
+        // Modal close
+        modalClose.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Lightbox events
+        lightboxClose.addEventListener("click", closeLightbox);
+        lightboxPrev.addEventListener("click", prevImage);
+        lightboxNext.addEventListener("click", nextImage);
+
+        imageLightbox.addEventListener("click", (e) => {
+            if (e.target === imageLightbox) closeLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                if (imageLightbox.classList.contains("active")) {
+                    closeLightbox();
+                } else {
+                    closeModal();
+                }
+            }
+            if (imageLightbox.classList.contains("active")) {
+                if (e.key === "ArrowLeft") prevImage();
+                if (e.key === "ArrowRight") nextImage();
+            }
+        });
+
+        // ===== INIT =====
+        renderGallery();
+    </script>
+</body>
+</html>
